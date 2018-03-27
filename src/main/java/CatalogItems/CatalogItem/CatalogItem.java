@@ -71,7 +71,7 @@ public abstract class CatalogItem {
         this.rating = rating;
     }
 
-    abstract String getState();
+    public abstract String getState();
 
-    abstract void nextState();
+    public abstract void nextState();
 }
