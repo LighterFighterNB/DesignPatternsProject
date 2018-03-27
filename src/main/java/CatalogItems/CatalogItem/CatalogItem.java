@@ -9,18 +9,14 @@ public interface CatalogItem {
     void setCreator(String creator);
 
     String getDescription();
-    void setDescription();
+    void setDescription(String description);
 
     int getYear();
-    void setYear();
+    void setYear(int year);
 
     String getGenre();
-    void setGenre();
+    void setGenre(String genre);
 
-    String getRating();
-    void setRating();
-
-    Object getState();
-    void setState(String state);
-    void nextState();
+    int getRating();
+    void setRating(int rating);
 }
