@@ -1,22 +1,77 @@
 package CatalogItems.CatalogItem;
 
-public interface CatalogItem {
+public abstract class CatalogItem {
 
-    String getTitle();
-    void setTitle(String title);
+    private String title;
+    private String creator;
+    private String description;
+    private int year;
+    private String genre;
+    private int rating;
 
-    String getCreator();
-    void setCreator(String creator);
+    public CatalogItem(String title, String creator, String description, int year, String genre, int rating)
+    {
+        this.title = title;
+        this.creator=creator;
+        this.description = description;
+        this.year = year;
+        this.rating = rating;
+    }
 
-    String getDescription();
-    void setDescription(String description);
+    public CatalogItem()
+    {
 
-    int getYear();
-    void setYear(int year);
+    }
 
-    String getGenre();
-    void setGenre(String genre);
+    public String getTitle() {
+        return title;
+    }
 
-    int getRating();
-    void setRating(int rating);
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getCreator() {
+        return creator;
+    }
+
+    public void setCreator(String creator) {
+        this.creator = creator;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
+    public int getRating() {
+        return rating;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
+    }
+
+    abstract String getState();
+
+    abstract void nextState();
 }
