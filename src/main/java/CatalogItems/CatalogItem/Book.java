@@ -1,19 +1,30 @@
 package CatalogItems.CatalogItem;
 
-public class Book implements CatalogItem
+import java.time.LocalDate;
+
+public class Book extends CatalogItem
 {
-    private String title;
-    private String creator;
-    private String description;
-    private int year;
-    private String genre;
+    private String startedReading;
+    private String finishedReading;
     private BookState state;
 
-    public Book(String title, String creator, String description, int year, String genre, BookState state)
+    public Book(String title, String creator, String description, int year, String genre, int rating,String startedReading, String finishedReading)
     {
-        this.title = title;
-        this.creator=creator;
-        this.description = description;
+        super(title,creator,description,year,genre,rating);
+        this.startedReading = startedReading;
+        this.finishedReading = finishedReading;
+        if(startedReading.equalsIgnoreCase(""))
+        {
+            state = new ToRead();
+        }
+        else if(finishedReading.equalsIgnoreCase(""))
+        {
+            state = new CurrentlyReading();
+        }
+        else
+        {
+            state = new Read();
+        }
     }
 
     public Book()
@@ -21,63 +32,45 @@ public class Book implements CatalogItem
 
     }
 
-    public String getTitle() {
-        return null;
+    public String getStartDate()
+    {
+        return startedReading;
     }
 
-    public void setTitle(String title) {
-
+    public void setStartDate(String startedReading)
+    {
+        this.startedReading = startedReading;
     }
 
-    public String getCreator() {
-        return null;
+    public void StartedReading()
+    {
+        startedReading = LocalDate.now().toString();
     }
 
-    public void setCreator(String creator) {
-
+    public String getFinishedDate()
+    {
+        return finishedReading;
     }
 
-    public String getDescription() {
-        return null;
+    public void setFinishedDate(String finishedReading)
+    {
+        this.finishedReading = finishedReading;
     }
 
-    public void setDescription() {
-
+    public void finishedReading()
+    {
+        finishedReading = LocalDate.now().toString();
     }
 
-    public int getYear() {
-        return 0;
+    public String getState() {
+        return state.getState();
     }
 
-    public void setYear() {
-
-    }
-
-    public String getGenre() {
-        return null;
-    }
-
-    public void setGenre() {
-
-    }
-
-    public String getRating() {
-        return null;
-    }
-
-    public void setRating() {
-
-    }
-
-    public Object getState() {
-        return null;
-    }
-
-    public void setState(String state) {
-
+    public void setState(BookState s) {
+        state = s;
     }
 
     public void nextState() {
-
+        state.goNext(this);
     }
 }
