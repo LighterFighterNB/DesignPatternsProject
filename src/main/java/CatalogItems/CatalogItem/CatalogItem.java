@@ -11,8 +11,6 @@ public interface CatalogItem {
     String getDescription();
     void setDescription();
 
-
-
     int getYear();
     void setYear();
 
