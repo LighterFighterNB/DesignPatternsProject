@@ -1,12 +1,11 @@
 import API.BookAPI;
+import Storage.TextFile;
 
 public class Main {
     public static void main(String[]args)
     {
-        BookAPI bAPI = new BookAPI();
+        TextFile textFile = new TextFile();
 
-        System.out.println(bAPI.search("Illuminae"));
-
-        System.out.println("Hello world");
+        textFile.createNewTextFile("Eric");
     }
 }
