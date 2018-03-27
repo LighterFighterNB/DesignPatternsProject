@@ -1,7 +1,7 @@
 package API;
 import okhttp3.*;
 
-public class BookAPI {
+public class BookAPI implements API{
     private final String URL = "https://www.goodreads.com/search.xml?";
     private final String key = "key=RIWQy80W6TBDYlMptXJyQ";
     private final String secret = "iw2K3xHouX1j9mCfQwjGEX79UgQpB7FBOFN0pUWzuU";
@@ -17,7 +17,7 @@ public class BookAPI {
         response = null;
     }
 
-    public String search(String query)
+    public String basicSearch(String query)
     {
         request = new Request.Builder().url(URL+key+"&q="+query).get().build();
         String finalResponse = "";

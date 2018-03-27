@@ -1,12 +1,25 @@
 import API.BookAPI;
+import API.JSONReader;
+import API.MovieAPI;
+import API.XMLReader;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 
 public class Main {
     public static void main(String[]args)
     {
-        BookAPI bAPI = new BookAPI();
+//        XMLReader bAPI = new XMLReader();
+//        BookAPI book = new BookAPI();
 
-        System.out.println(bAPI.search("Illuminae"));
+        //System.out.println(book.basicSearch("Illuminae"));
 
-        System.out.println("Hello world");
+//        bAPI.createXML("Illuminae");
+
+//        MovieAPI movie = new MovieAPI();
+//        System.out.println(movie.detailedSearch("About time"));
     }
 }
