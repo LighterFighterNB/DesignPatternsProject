@@ -25,7 +25,7 @@ public class JSONReader {
         return arrayOfMovies;
     }
 
-    public ArrayList<String> getTitleArray(String query)
+    public ArrayList<String> getTitles(String query)
     {
         JSONArray arrayOfMovies = createJSONMovieArray(query);
 
@@ -37,11 +37,11 @@ public class JSONReader {
         return arrayOfTitles;
     }
 
-    public HashMap<String, String> createJSONDetails(String query)
+    public HashMap<String, String> createDetails(String query)
     {
         String JSONtext = movieAPI.detailedSearch(query);
         JSONObject jsonObject = new JSONObject(JSONtext);
-        HashMap<String, String> arrayOfMoviesDetails = new HashMap<String, String>();
+        HashMap<String, String> arrayOfMoviesDetails = new HashMap<>();
         arrayOfMoviesDetails.put("Title",jsonObject.get("Title").toString());
         arrayOfMoviesDetails.put("Year",jsonObject.get("Year").toString());
         arrayOfMoviesDetails.put("Rated",jsonObject.get("Rated").toString());

@@ -25,7 +25,7 @@ public class TextFileAdapter implements StorageInterface {
 
     @Override
     public void saveCatalog(String userName) {
-        textFile.saveToTextFile(userName);
+        //textFile.saveToTextFile(userName);
     }
 
     @Override
