@@ -5,6 +5,16 @@ import CatalogItems.CatalogItem.CatalogItem;
 import CatalogItems.CatalogItem.Movie;
 =======
 <<<<<<< HEAD
+import API.JSONReader;
+import API.MovieAPI;
+import API.XMLReader;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+=======
 >>>>>>> 4e0f5db686ecc37b0bad508c0269d8996c4cefcf
 import Storage.TextFile;
 >>>>>>> 23cc42d3f46fbc4ce31e801051d5120f777fe6af
