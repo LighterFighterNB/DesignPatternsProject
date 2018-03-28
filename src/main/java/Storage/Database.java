@@ -16,7 +16,7 @@ public class Database implements StorageInterface {
     }
 
     @Override
-    public void saveCatalog(String userName) {
+    public void saveCatalog(String userName, ArrayList<CatalogItem> catalogItems) {
 
     }
 

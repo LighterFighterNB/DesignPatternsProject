@@ -15,6 +15,7 @@ public abstract class CatalogItem {
         this.creator=creator;
         this.description = description;
         this.year = year;
+        this.genre = genre;
         this.rating = rating;
     }
 
