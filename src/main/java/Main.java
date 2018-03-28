@@ -1,3 +1,4 @@
+import API.XMLReader;
 import API.BookAPI;
 import CatalogItems.CatalogItem.Book;
 import CatalogItems.CatalogItem.CatalogItem;
@@ -23,15 +24,20 @@ public class Main {
     {
 //        XMLReader bAPI = new XMLReader();
 //        BookAPI book = new BookAPI();
+        XMLReader bAPI = new XMLReader();
+       // BookAPI book = new BookAPI();
 
-        //System.out.println(book.basicSearch("Illuminae"));
+       // System.out.println(book.basicSearch("Illuminae"));
 
-//        bAPI.createXML("Illuminae");
+        //bAPI.createBookDetails("Harry Potter");
 
 //        MovieAPI movie = new MovieAPI();
 //        System.out.println(movie.detailedSearch("About time"));
         TextFile textFile = new TextFile();
 
+        //TextFile textFile = new TextFile();
+
+       // textFile.createNewTextFile("Eric");
         ArrayList<CatalogItem> catalogItems = new ArrayList<>();
 
         catalogItems.add(new Movie("Hello", "me","All about me",1999,"horror",5,"2500"));
