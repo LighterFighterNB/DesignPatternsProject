@@ -1,7 +1,7 @@
 package CatalogItems.CatalogItem.Command;
 
 public class CatalogItemEvent {
-    CatalogItemCommand command;
+    private CatalogItemCommand command;
 
     public CatalogItemEvent(CatalogItemCommand command)
     {
