@@ -88,41 +88,42 @@ public class TextFile {
     public ArrayList<CatalogItem> loadCatalog(String userName)
     {
         ArrayList<CatalogItem> catalogItems = new ArrayList<>();
-        if(findTextFileBasedOn(userName))
-        {
-            Path file = Paths.get("SavedFiles/"+userName+".txt");
-            try {
-                List<String> lines = Files.readAllLines(file);
-                CatalogItem catalogItem = null;
-                for (String line:lines) {
-                    if(line.equalsIgnoreCase("book:"))
-                    {
-                        catalogItem = new Book();
-                    }
-                    else if(line.equalsIgnoreCase("movie:"))
-                    {
-                        catalogItem = new Movie();
-                    }
-                    else
-                    {
-                        String[] details = line.split("_",20);
-                        if(catalogItem.getClass().getName().equalsIgnoreCase("CatalogItems.CatalogItem.book"))
-                        {
-                            catalogItem = new Book(details[0],details[1],details[3],Integer.parseInt(details[4]),details[5],Integer.parseInt(details[6]),details[7],details[8]);
-                        }
-                        else if(catalogItem.getClass().getName().equalsIgnoreCase("CatalogItems.CatalogItem.movie"))
-                        {
-                            catalogItem = new Movie(details[0],details[1],details[3],Integer.parseInt(details[4]),details[5],Integer.parseInt(details[6]),details[7]);
-                        }
-                    }
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        else {
-            System.out.println("User could not be found");
-        }
+//        if(findTextFileBasedOn(userName))
+//        {
+//            Path file = Paths.get("SavedFiles/"+userName+".txt");
+//            try {
+//                List<String> lines = Files.readAllLines(file);
+//                CatalogItem catalogItem = null;
+//                for (String line:lines) {
+//                    if(line.equalsIgnoreCase("book:"))
+//                    {
+//                        catalogItem = new Book();
+//                    }
+//                    else if(line.equalsIgnoreCase("movie:"))
+//                    {
+//                        catalogItem = new Movie();
+//                    }
+//                    else
+//                    {
+//                        String[] details = line.split("_",20);
+//                        if(catalogItem.getClass().getName().equalsIgnoreCase("CatalogItems.CatalogItem.book"))
+//                        {
+//                            catalogItem = new Book(details[0],details[1],details[3],Integer.parseInt(details[4]),details[5],Integer.parseInt(details[6]),details[7],details[8]);
+//                        }
+//                        else if(catalogItem.getClass().getName().equalsIgnoreCase("CatalogItems.CatalogItem.movie"))
+//                        {
+//                            System.out.println();
+//                            catalogItem = new Movie(details[0],details[1],details[3],Integer.parseInt(details[4]),details[5],Integer.parseInt(details[6]),details[7]);
+//                        }
+//                    }
+//                }
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//        else {
+//            System.out.println("User could not be found");
+//        }
         return catalogItems;
     }
 
