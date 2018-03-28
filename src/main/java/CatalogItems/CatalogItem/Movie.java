@@ -1,5 +1,7 @@
 package CatalogItems.CatalogItem;
 
+import java.time.LocalDate;
+
 public class Movie extends CatalogItem {
 
     private String watchedDate;
@@ -22,6 +24,21 @@ public class Movie extends CatalogItem {
     public Movie()
     {
 
+    }
+
+    public String getWatchedDate()
+    {
+        return watchedDate;
+    }
+
+    public void watched()
+    {
+        watchedDate = LocalDate.now().toString();
+    }
+
+    public void setWatchedDate(String watchedDate)
+    {
+        this.watchedDate = watchedDate;
     }
 
     public String getState() {
