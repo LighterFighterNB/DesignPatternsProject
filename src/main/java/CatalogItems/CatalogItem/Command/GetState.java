@@ -3,7 +3,7 @@ package CatalogItems.CatalogItem.Command;
 import CatalogItems.CatalogItem.CatalogItem;
 
 public class GetState implements CatalogItemCommand {
-    CatalogItem item;
+    private CatalogItem item;
 
     public GetState(CatalogItem item)
     {
