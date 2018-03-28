@@ -6,7 +6,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class JSONReader {
+public class JSONReader implements APIReader{
     private MovieAPI movieAPI;
     private ArrayList<String> arrayOfTitles;
 
@@ -47,7 +47,7 @@ public class JSONReader {
         arrayOfMoviesDetails.put("Rated",jsonObject.get("Rated").toString());
         arrayOfMoviesDetails.put("Genre",jsonObject.get("Genre").toString());
         arrayOfMoviesDetails.put("Director",jsonObject.get("Director").toString());
-        arrayOfMoviesDetails.put("Plot",jsonObject.get("Plot ").toString());
+        arrayOfMoviesDetails.put("Plot",jsonObject.get("Plot").toString());
 
         return arrayOfMoviesDetails;
     }
