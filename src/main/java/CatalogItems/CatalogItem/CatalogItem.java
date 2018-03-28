@@ -4,18 +4,14 @@ public abstract class CatalogItem {
 
     private String title;
     private String creator;
-    private String description;
     private int year;
-    private String genre;
-    private int rating;
+    private double rating;
 
-    public CatalogItem(String title, String creator, String description, int year, String genre, int rating)
+    public CatalogItem(String title, String creator, int year, double rating)
     {
         this.title = title;
         this.creator=creator;
-        this.description = description;
         this.year = year;
-        this.genre = genre;
         this.rating = rating;
     }
 
@@ -40,13 +36,6 @@ public abstract class CatalogItem {
         this.creator = creator;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
 
     public int getYear() {
         return year;
@@ -56,15 +45,8 @@ public abstract class CatalogItem {
         this.year = year;
     }
 
-    public String getGenre() {
-        return genre;
-    }
 
-    public void setGenre(String genre) {
-        this.genre = genre;
-    }
-
-    public int getRating() {
+    public double getRating() {
         return rating;
     }
 

@@ -4,12 +4,16 @@ import java.time.LocalDate;
 
 public class Movie extends CatalogItem {
 
+    private String description;
+    private String genre;
     private String watchedDate;
     private MovieState state;
 
-    public Movie(String title, String creator, String description, int year, String genre, int rating, String watchedDate)
+    public Movie(String title, String creator, String description, int year, String genre, double rating, String watchedDate)
     {
-        super(title, creator, description, year, genre, rating);
+        super(title, creator, year, rating);
+        this.description = description;
+        this.genre = genre;
         this.watchedDate = watchedDate;
         if(watchedDate.equalsIgnoreCase(""))
         {
@@ -24,6 +28,26 @@ public class Movie extends CatalogItem {
     public Movie()
     {
 
+    }
+
+    public String getDescription()
+    {
+        return description;
+    }
+
+    public void setDescription(String description)
+    {
+        this.description = description;
+    }
+
+    public String getGenre()
+    {
+        return genre;
+    }
+
+    public void setGenre(String genre)
+    {
+        this.genre = genre;
     }
 
     public String getWatchedDate()
@@ -52,4 +76,5 @@ public class Movie extends CatalogItem {
     public void nextState() {
         state.goNext(this);
     }
+
 }

@@ -4,6 +4,7 @@ import CatalogItems.CatalogItem.Book;
 import CatalogItems.CatalogItem.CatalogItem;
 import CatalogItems.CatalogItem.Movie;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
@@ -12,6 +13,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Stream;
 
 public class TextFile {
@@ -27,7 +29,7 @@ public class TextFile {
         if(!findTextFileBasedOn(userName))
         {
             List<String> lines = Arrays.asList("The first line", "The second line");
-            Path file = Paths.get("..//SavedFiles//"+userName+".txt");
+            Path file = Paths.get("SavedFiles/"+userName+".txt");
             try {
                 Files.write(file, lines, Charset.forName("UTF-8"));
             } catch (IOException e) {
@@ -57,9 +59,9 @@ public class TextFile {
                 temp = new StringBuilder();
                 temp.append(catItem.getTitle()+"_");
                 temp.append(catItem.getCreator()+"_");
-                temp.append(catItem.getDescription()+"_");
+
                 temp.append(catItem.getYear()+"_");
-                temp.append(catItem.getGenre()+"_");
+
                 temp.append(catItem.getRating()+"_");
                 if(catItem.getClass().getName().equalsIgnoreCase("CatalogItems.CatalogItem.book"))
                 {
@@ -68,6 +70,8 @@ public class TextFile {
                 }
                 else if(catItem.getClass().getName().equalsIgnoreCase("CatalogItems.CatalogItem.movie"))
                 {
+                    temp.append(((Movie)catItem).getGenre()+"_");
+                    temp.append(((Movie)catItem).getDescription()+"_");
                     temp.append(((Movie) catItem).getWatchedDate()+"_");
                 }
                 lines.add(temp.toString());
@@ -129,11 +133,18 @@ public class TextFile {
 
     public boolean findTextFileBasedOn(String parm)
     {
-        try (Stream<Path> paths = Files.walk(Paths.get("SavedFiles"))) {
-            paths.filter(Files::isRegularFile).forEach(System.out::println);
-        } catch (IOException e) {
-            e.printStackTrace();
+        boolean exists = false;
+        File folder = new File("SavedFiles/");
+        for (final File fileEntry : Objects.requireNonNull(folder.listFiles()))
+        {
+            if(fileEntry.getName().equalsIgnoreCase(parm+".txt"))
+            {
+                exists = true;
+            }
+            else {
+                exists = false;
+            }
         }
-        return true;
+        return exists;
     }
 }

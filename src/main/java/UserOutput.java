@@ -8,4 +8,9 @@ public class UserOutput {
     {
         System.out.println(message);
     }
+
+    public void printLineSeperator()
+    {
+        System.out.println("----------------------------------------------------");
+    }
 }

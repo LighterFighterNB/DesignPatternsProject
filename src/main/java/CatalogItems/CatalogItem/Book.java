@@ -8,9 +8,9 @@ public class Book extends CatalogItem
     private String finishedReading;
     private BookState state;
 
-    public Book(String title, String creator, String description, int year, String genre, int rating,String startedReading, String finishedReading)
+    public Book(String title, String creator, int year, double rating,String startedReading, String finishedReading)
     {
-        super(title,creator,description,year,genre,rating);
+        super(title,creator,year,rating);
         this.startedReading = startedReading;
         this.finishedReading = finishedReading;
         if(startedReading.equalsIgnoreCase(""))

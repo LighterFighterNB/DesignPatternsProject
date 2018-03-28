@@ -26,62 +26,8 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[]args)
     {
-////        XMLReader bAPI = new XMLReader();
-////        BookAPI book = new BookAPI();
-//        JSONReader json = new JSONReader();
-//        XMLReader xml = new XMLReader();
-//        APIReader xmlAdapter = new XMLReaderAdapter(xml);
-//
-//        System.out.println("XMLReader");
-//        xml.createBookDetails("Illuminae");
-//
-//        System.out.println("all titles");
-//        xml.getBooksTitle("About time");
-//
-//        System.out.println("Movies");
-//        json.createDetails("About time");
-//
-//        System.out.println("All titles movies:");
-//        json.getTitles("Harry Potter");
-//
-//        System.out.println("XMLAdapter part");
-//        xmlAdapter.createDetails("Harry Potter");
-//
-//        System.out.println("All titles:");
-//        xmlAdapter.getTitles("If I stay");
+        Catalog catalog = new Catalog();
 
-//        TextFile textFile = new TextFile();
-//       // textFile.createNewTextFile("Eric");
-//        ArrayList<CatalogItem> catalogItems = new ArrayList<>();
-//
-//        catalogItems.add(new Movie("Hello", "me","All about me",1999,"horror",5,"2500"));
-//        catalogItems.add(new Book("Hello", "me","All about me",1999,"horror",5,"24021996","30021996"));
-//
-//        textFile.saveToTextFile("Eric", catalogItems);
-//        textFile.loadCatalog("Eric");
-//        textFile.createNewTextFile("Eric");
-//        XMLReader bAPI = new XMLReader();
-//       // BookAPI book = new BookAPI();
-//
-//       // System.out.println(book.basicSearch("Illuminae"));
-//
-//        //bAPI.createBookDetails("Harry Potter");
-//
-////        MovieAPI movie = new MovieAPI();
-////        System.out.println(movie.detailedSearch("About time"));
-//        TextFile textFile = new TextFile();
-//
-//        //TextFile textFile = new TextFile();
-//
-//       // textFile.createNewTextFile("Eric");
-//        ArrayList<CatalogItem> catalogItems = new ArrayList<>();
-//
-//        catalogItems.add(new Movie("Hello", "me","All about me",1999,"horror",5,"2500"));
-//        catalogItems.add(new Book("Hello", "me","All about me",1999,"horror",5,"24021996","30021996"));
-//
-//        textFile.saveToTextFile("Eric", catalogItems);
-//        textFile.loadCatalog("Eric");
-//        textFile.createNewTextFile("Eric");
-
+        catalog.start();
     }
 }
