@@ -44,7 +44,7 @@ public class JSONReader implements APIReader{
         HashMap<String, String> arrayOfMoviesDetails = new HashMap<>();
         arrayOfMoviesDetails.put("Title",jsonObject.get("Title").toString());
         arrayOfMoviesDetails.put("Year",jsonObject.get("Year").toString());
-        arrayOfMoviesDetails.put("Rated",jsonObject.get("Rated").toString());
+        arrayOfMoviesDetails.put("Rated",jsonObject.getJSONArray("Ratings").getJSONObject(0).get("Value").toString().split("/")[0]);
         arrayOfMoviesDetails.put("Genre",jsonObject.get("Genre").toString());
         arrayOfMoviesDetails.put("Director",jsonObject.get("Director").toString());
         arrayOfMoviesDetails.put("Plot",jsonObject.get("Plot").toString());

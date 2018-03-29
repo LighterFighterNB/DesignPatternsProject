@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Stream;
 
 public class TextFile {
     private String fileLocation = "C://";
@@ -46,9 +45,7 @@ public class TextFile {
     {
         List<String> lines = new ArrayList<>();
         StringBuilder temp = new StringBuilder();
-        if(findTextFileBasedOn(userName))
-        {
-            for (CatalogItem catItem: catalogItems) {
+                    for (CatalogItem catItem: catalogItems) {
                 if(catItem.getClass().getName().equalsIgnoreCase("CatalogItems.CatalogItem.book"))
                 {
                     lines.add("Book:");
@@ -83,11 +80,7 @@ public class TextFile {
                 e.printStackTrace();
             }
         }
-        else
-        {
-            System.out.println("This name has not yet been used please create the user and then save");
-        }
-    }
+
 
     public ArrayList<CatalogItem> loadCatalog(String userName)
     {
