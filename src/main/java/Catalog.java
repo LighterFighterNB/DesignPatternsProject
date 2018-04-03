@@ -285,7 +285,7 @@ public class Catalog {
             {
                 createItem(jsonReader.createDetails(option),"movie");
                 output.printMessage("added");
-                executeCommand("Please enter a command");
+                executeCommand(input.getInput("Please enter a command"));
             }
             else
             {

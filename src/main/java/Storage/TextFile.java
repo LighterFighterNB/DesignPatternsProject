@@ -101,16 +101,18 @@ public class TextFile {
                     else
                     {
                         String[] details = line.split("_",20);
-                        assert catalogItem != null;
-                        if(catalogItem.getClass().getName().equalsIgnoreCase("CatalogItems.CatalogItem.book"))
+                        if(catalogItem!=null)
                         {
-                            catalogItem = new Book(details[0],details[1],Integer.parseInt(details[2]),Double.parseDouble(details[3]),details[4],details[5]);
-                            catalogItems.add(catalogItem);
-                        }
-                        else if(catalogItem.getClass().getName().equalsIgnoreCase("CatalogItems.CatalogItem.movie"))
-                        {
-                            catalogItem = new Movie(details[0],details[1],details[5],Integer.parseInt(details[2]),details[4],Double.parseDouble(details[3]),details[6]);
-                            catalogItems.add(catalogItem);
+                            if(catalogItem.getClass().getName().equalsIgnoreCase("CatalogItems.CatalogItem.book"))
+                            {
+                                catalogItem = new Book(details[0],details[1],Integer.parseInt(details[2]),Double.parseDouble(details[3]),details[4],details[5]);
+                                catalogItems.add(catalogItem);
+                            }
+                            else if(catalogItem.getClass().getName().equalsIgnoreCase("CatalogItems.CatalogItem.movie"))
+                            {
+                                catalogItem = new Movie(details[0],details[1],details[5],Integer.parseInt(details[2]),details[4],Double.parseDouble(details[3]),details[6]);
+                                catalogItems.add(catalogItem);
+                            }
                         }
                     }
                 }
@@ -121,7 +123,7 @@ public class TextFile {
         else {
             System.out.println("User could not be found");
         }
-        System.out.println("Catalog size:"+ catalogItems.size());
+        System.out.println("Catalog size: "+ catalogItems.size());
         return catalogItems;
     }
 
@@ -131,7 +133,6 @@ public class TextFile {
         File folder = new File("SavedFiles/");
         for (final File fileEntry : Objects.requireNonNull(folder.listFiles()))
         {
-            System.out.println("Test findTextFileBasedOn"+fileEntry.getName());
             if(fileEntry.getName().equalsIgnoreCase(parm+".txt"))
             {
                 exists = true;
