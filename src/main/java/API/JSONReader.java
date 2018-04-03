@@ -7,18 +7,18 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class JSONReader implements APIReader{
-    private MovieAPI movieAPI;
+    private API api;
     private ArrayList<String> arrayOfTitles;
 
     public JSONReader()
     {
-        movieAPI = new MovieAPI();
-        arrayOfTitles = new ArrayList<String>();
+        api = new MovieAPI();
+        arrayOfTitles = new ArrayList<>();
     }
 
     private JSONArray createJSONMovieArray(String query)
     {
-        String JSONtext = movieAPI.basicSearch(query);
+        String JSONtext = api.basicSearch(query);
         JSONObject jsonObject = new JSONObject(JSONtext);
         JSONArray arrayOfMovies = (JSONArray) jsonObject.get("Search");
 
@@ -39,7 +39,7 @@ public class JSONReader implements APIReader{
 
     public HashMap<String, String> createDetails(String query)
     {
-        String JSONtext = movieAPI.detailedSearch(query);
+        String JSONtext = ((MovieAPI)api).detailedSearch(query);
         JSONObject jsonObject = new JSONObject(JSONtext);
         HashMap<String, String> arrayOfMoviesDetails = new HashMap<>();
         arrayOfMoviesDetails.put("Title",jsonObject.get("Title").toString());
