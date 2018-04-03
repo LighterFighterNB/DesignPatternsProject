@@ -12,6 +12,7 @@ public class SwitchState implements CatalogItemCommand {
 
     @Override
     public void execute() {
+        System.out.println("Command executed");
         item.nextState();
     }
 }

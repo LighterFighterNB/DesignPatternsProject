@@ -4,7 +4,6 @@ import API.XMLReaderAdapter;
 import CatalogItems.CatalogItem.Book;
 import CatalogItems.CatalogItem.CatalogItem;
 import CatalogItems.CatalogItem.Command.CatalogItemEvent;
-import CatalogItems.CatalogItem.Command.GetState;
 import CatalogItems.CatalogItem.Command.SwitchState;
 import CatalogItems.CatalogItem.Movie;
 import Storage.TextFile;
@@ -26,7 +25,6 @@ public class Catalog {
     //CatalogItems
     private ArrayList<CatalogItem> catalogItems;
     private CatalogItemEvent getStateEvent;
-    private CatalogItemEvent switchStateEvent;
 
     //Storage
     //Adapter
@@ -61,7 +59,15 @@ public class Catalog {
         else
         {
             output.printLineSeperator();
-            output.printMessage("This user is already in use please try another");
+            if(input.getInput("This user is already in use would you like to load (Y/N)").equalsIgnoreCase("y"))
+            {
+                load(user);
+            }
+            else
+            {
+                output.printMessage("Please try again");
+                start();
+            }
         }
     }
 
@@ -76,6 +82,13 @@ public class Catalog {
         {
             output.printMessage("saving");
             textFileAdapter.saveCatalog(user,catalogItems);
+            output.printMessage("Saving complete");
+            output.printLineSeperator();
+            executeCommand(input.getInput("Please enter a command:"));
+        }
+        else if(command.equalsIgnoreCase("load"))
+        {
+            load(input.getInput("Please enter the user you wish to load:"));
         }
         else if(command.equalsIgnoreCase("view"))
         {
@@ -86,6 +99,7 @@ public class Catalog {
             output.printMessage("Commands that can be used are:");
             output.printMessage("search");
             output.printMessage("save");
+            output.printMessage("load");
             output.printMessage("view");
             output.printMessage("help");
             output.printMessage("exit");
@@ -99,6 +113,23 @@ public class Catalog {
         else
         {
             executeCommand(input.getInput("Incorrect command, please enter another command"));
+        }
+    }
+
+    public void load(String username)
+    {
+        ArrayList<CatalogItem> catalogItems = textFileAdapter.loadCatalog(username);
+        if(!catalogItems.isEmpty())
+        {
+            this.catalogItems = catalogItems;
+            output.printMessage("Loaded: "+username);
+            user = username;
+            executeCommand(input.getInput("Please enter a command"));
+        }
+        else
+        {
+            output.printMessage("loading failed");
+            executeCommand(input.getInput("Please enter a command"));
         }
     }
 
@@ -117,7 +148,14 @@ public class Catalog {
         }
         else if(option.equalsIgnoreCase("movies"))
         {
-
+            for (CatalogItem item:catalogItems)
+            {
+                if(item.getClass().getName().equalsIgnoreCase("CatalogItems.CatalogItem.Movie"))
+                {
+                    output.printMessage("Title: "+item.getTitle()+" State: "+item.getState());
+                }
+            }
+            selectView(input.getInput("Please type your selected item to view in more detail"),"movies");
         }
         else if(option.equalsIgnoreCase("back"))
         {
@@ -131,36 +169,68 @@ public class Catalog {
 
     public void selectView(String option, String type)
     {
-        if(type.equalsIgnoreCase("books"))
+        if(!option.equalsIgnoreCase("back"))
         {
-            for (CatalogItem item:catalogItems)
-            {
-                if(item.getTitle().equalsIgnoreCase(option))
-                {
-                    printCatalogItem(item);
-                }
-            }
-            String response = input.getInput("If you would like to change the state of this item please type 'Change state' else type 'back'");
-
-            if(response.equalsIgnoreCase("Change state"))
+            if(type.equalsIgnoreCase("books"))
             {
                 for (CatalogItem item:catalogItems)
                 {
                     if(item.getTitle().equalsIgnoreCase(option))
                     {
-                        switchStateEvent = new CatalogItemEvent(new SwitchState(item));
-                        switchStateEvent.event();
+                        printCatalogItem(item);
                     }
                 }
+                String response = input.getInput("If you would like to change the state of this item please type 'Change state' else type 'back'");
+
+                if(response.equalsIgnoreCase("Change state"))
+                {
+                    for (CatalogItem item:catalogItems)
+                    {
+                        if(item.getTitle().equalsIgnoreCase(option))
+                        {
+                            CatalogItemEvent switchStateEvent = new CatalogItemEvent(new SwitchState(item));
+                            switchStateEvent.event();
+                            selectView(option,type);
+                        }
+                    }
+                }
+                else
+                {
+                    view("books");
+                }
             }
-            else
+            else if(type.equalsIgnoreCase("movies"))
             {
-                view("books");
+                for (CatalogItem item:catalogItems)
+                {
+                    if(item.getTitle().equalsIgnoreCase(option))
+                    {
+                        printCatalogItem(item);
+                    }
+                }
+                String response = input.getInput("If you would like to change the state of this item please type 'Change state' else type 'back'");
+
+                if(response.equalsIgnoreCase("Change state"))
+                {
+                    for (CatalogItem item:catalogItems)
+                    {
+                        if(item.getTitle().equalsIgnoreCase(option))
+                        {
+                            CatalogItemEvent switchStateEvent = new CatalogItemEvent(new SwitchState(item));
+                            switchStateEvent.event();
+                            selectView(option,type);
+                        }
+                    }
+                }
+                else
+                {
+                    view("movies");
+                }
             }
         }
-        else if(type.equalsIgnoreCase("movies"))
+        else
         {
-            output.printMessage("Test");
+            executeCommand(input.getInput("Please enter a command"));
         }
     }
 

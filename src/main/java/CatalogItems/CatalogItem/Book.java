@@ -42,7 +42,7 @@ public class Book extends CatalogItem
         this.startedReading = startedReading;
     }
 
-    public void StartedReading()
+    public void startedReading()
     {
         startedReading = LocalDate.now().toString();
     }
