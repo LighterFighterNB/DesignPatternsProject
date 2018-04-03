@@ -2,19 +2,11 @@ package API;
 
 import okhttp3.*;
 
-public class MovieAPI implements API{
-    private String URL = "http://www.omdbapi.com/?i=tt3896198";
-    private String key = "&apikey=b65777aa";
-
-    private OkHttpClient client;
-    private Request request;
-    private Response response;
+public class MovieAPI extends API{
 
     public MovieAPI()
     {
-        client = new OkHttpClient();
-        request = null;
-        response = null;
+        super("http://www.omdbapi.com/?i=tt3896198", "&apikey=b65777aa");
     }
 
     public String basicSearch(String query)

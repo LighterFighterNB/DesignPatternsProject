@@ -1,20 +1,13 @@
 package API;
 import okhttp3.*;
 
-public class BookAPI implements API{
-    private final String URL = "https://www.goodreads.com/search.xml?";
-    private final String key = "key=RIWQy80W6TBDYlMptXJyQ";
+public class BookAPI extends API{
     private final String secret = "iw2K3xHouX1j9mCfQwjGEX79UgQpB7FBOFN0pUWzuU";
 
-    private OkHttpClient client;
-    private Request request;
-    private Response response;
 
     public BookAPI()
     {
-        client = new OkHttpClient();
-        request = null;
-        response = null;
+        super("https://www.goodreads.com/search.xml?", "key=RIWQy80W6TBDYlMptXJyQ");
     }
 
     public String basicSearch(String query)

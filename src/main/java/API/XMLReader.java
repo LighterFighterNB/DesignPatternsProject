@@ -13,16 +13,16 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class XMLReader {
-    private BookAPI bookAPI;
+    private API api;
 
     public XMLReader()
     {
-        bookAPI = new BookAPI();
+        api = new BookAPI();
     }
 
     private Document createXML(String query)
     {
-        String XMLtext = bookAPI.basicSearch(query);
+        String XMLtext = api.basicSearch(query);
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         DocumentBuilder db;
         Document doc = null;
